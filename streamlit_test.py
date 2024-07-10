@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import time
+from joblib import Parallel, delayed
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
 
