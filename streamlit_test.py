@@ -21,16 +21,16 @@ if st.button('Run code'):
         t0 = time.time()
 
         np_lst = []
-        for i in range(10000):
+        for i in range(100000):
             np_lst.append(func(i))
         t1 = time.time()
 
-        par_lst = Parallel(n_jobs=-1)(delayed(func)(i) for i in range(10000))
+        par_lst = Parallel(n_jobs=-1)(delayed(func)(i) for i in range(100000))
         t2 = time.time()
 
         pp_lst = []
         with ProcessPoolExecutor() as executor:
-            futures = [executor.submit(func, i) for i in range(10000)]
+            futures = [executor.submit(func, i) for i in range(100000)]
             for future in as_completed(futures):
                 pp_lst.append(future.result())
         t3 = time.time()
